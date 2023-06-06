@@ -1,0 +1,28 @@
+a{
+    text-decoration: none !important;
+}
+
+.body-btn{
+    height: 80px;
+    width: 80px;
+    border-radius: 20px;
+    color :#e3afbc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin:5px auto
+}
+
+.body-btn.active{
+    background-color: #e3afbc;
+    color: #5d001e;
+
+}
+
+.title-btn{
+    margin: 4px auto;
+    font-weight: 60%;
+    font-size: 14px;
+
+}
