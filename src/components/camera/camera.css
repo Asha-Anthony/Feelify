@@ -1,0 +1,22 @@
+button {
+    width: 200px;
+    padding: 15px 20px;
+    text-align: center;
+    background-color: #5d001e;
+    border-radius: 50px;
+    color:#e3e2df ;
+    font-weight: 600;
+    text-align: center;
+    align-items: center;
+    
+  }
+.display{
+    height: 600px;
+    width: 600px;
+    margin   :20px;
+    margin-top: 95px;
+}
+.cam{
+ margin :20px;
+
+}
