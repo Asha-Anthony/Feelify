@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from "react";
 import Trending from '../trending';
 import Camera from '../../components/camera/camera';
+import './emotions.css';
 export default function Emotions() {
 
   const [isCam, setIsCam] = useState(false);
@@ -21,10 +22,12 @@ export default function Emotions() {
   }
   return (
     <div className='screen-container'>
+
+    <button className='btn'  onClick={toggleCam}>Use Camera</button>
+    or 
+    <button className='btn' onClick={toggleText}>Use text</button>
     {isCam && <Camera/>}
     {isText && <Trending/>}
-    <button onClick={toggleCam}>Use Camera</button>
-    <button onClick={toggleText}>Use text</button>
   </div>
   )
 }
