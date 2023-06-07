@@ -11,13 +11,19 @@ a{
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin:5px auto
+    margin:5px auto;
+    transition: all 0.2s ease;
 }
 
 .body-btn.active{
-    background-color: #e3afbc;
-    color: #5d001e;
+    background-color: #9a1750;
+    color: #e3afbc;;
+    transform: scale(1.05);
 
+}
+
+.body-btn:hover{
+    color:#e3e2df;
 }
 
 .title-btn{
