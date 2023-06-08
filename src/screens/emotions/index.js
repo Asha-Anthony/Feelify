@@ -1,9 +1,37 @@
 import React from 'react'
 import { useState } from "react";
-import Trending from '../trending';
 import Camera from '../../components/camera/camera';
-import './emotions.css';
+
+import ChatBot from 'react-simple-chatbot';
+const steps = [
+  {
+      id: '0',
+      message: 'Hey there!',
+
+      // This calls the next id
+      // i.e. id 1 in this case
+      trigger: '1',
+  }, {
+      id: '1',
+
+      // This message appears in
+      // the bot chat bubble
+      message: 'Welcome back to Feelify ! how was your day?',
+      trigger: '2'
+  }, {
+      id: '2',
+
+      // Here we want the user
+      // to enter input
+      user: true,
+      end : true
+  }
+];
+
 export default function Emotions() {
+
+
+
 
   const [isCam, setIsCam] = useState(false);
   const [isText, setIsText] = useState(false);
@@ -23,11 +51,10 @@ export default function Emotions() {
   return (
     <div className='screen-container'>
 
-    <button className='btn'  onClick={toggleCam}>Use Camera</button>
-    or 
-    <button className='btn' onClick={toggleText}>Use text</button>
+    <button className='emo-btn'  onClick={toggleCam}>Use Camera</button>
+    <button className='emo-btn' onClick={toggleText}>Use text</button>
     {isCam && <Camera/>}
-    {isText && <Trending/>}
+    {isText && <ChatBot steps={steps} />}
   </div>
   )
 }
