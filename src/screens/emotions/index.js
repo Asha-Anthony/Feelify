@@ -32,7 +32,7 @@ const steps = [
 
 ];
 const config = {
-  botAvatar: "bot.jpg",
+  botAvatar: ".//bot.jpg",
   
 };
 const theme = {
