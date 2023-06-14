@@ -1,32 +1,50 @@
 import React from 'react'
 import { useState } from "react";
 import Camera from '../../components/camera/camera';
-
+import "./emotions.css";
 import ChatBot from 'react-simple-chatbot';
+import { ThemeProvider } from 'styled-components';
 const steps = [
   {
-      id: '0',
-      message: 'Hey there!',
-
-      // This calls the next id
-      // i.e. id 1 in this case
-      trigger: '1',
+    id: '0',
+    message: 'Hey there!',
+    trigger: '1',
   }, {
-      id: '1',
-
-      // This message appears in
-      // the bot chat bubble
-      message: 'Welcome back to Feelify ! how was your day?',
-      trigger: '2'
-  }, {
-      id: '2',
-
-      // Here we want the user
-      // to enter input
-      user: true,
-      end : true
+    id: '1',
+    message: 'Welcome back to Feelify !',
+    trigger: '2'
+  },
+  {
+    id: '2',
+    message: 'Can you breifly describe your day so far',
+    trigger: '3'
+  },
+  {
+    id: '3',
+    user: true,
+    trigger: '4'
+  },
+  {
+    id: '4',
+    message: 'Thank you. Please wait while I analyze.',
+    end: true
   }
+
 ];
+const config = {
+  botAvatar: "bot.jpg",
+  
+};
+const theme = {
+  background: '#e3e2df',
+  headerBgColor: "#5d001e",
+  headerFontSize: '20px',
+  botBubbleColor: '#e3afbc',
+  headerFontColor: '#e3afbc',
+  botFontColor: '#e3e2df',
+  userBubbleColor: '#e3e2df',
+  userFontColor: '#e3afbc',
+};
 
 export default function Emotions() {
 
@@ -38,23 +56,23 @@ export default function Emotions() {
 
   function toggleCam() {
     setIsCam((isCam) => !isCam);
-    if(!isCam){
-      setIsText((false) );
+    if (!isCam) {
+      setIsText((false));
     }
   }
   function toggleText() {
     setIsText((isText) => !isText);
-    if(!isText){
-      setIsCam((false) );
+    if (!isText) {
+      setIsCam((false));
     }
   }
   return (
     <div className='screen-container'>
 
-    <button className='emo-btn'  onClick={toggleCam}>Use Camera</button>
-    <button className='emo-btn' onClick={toggleText}>Use text</button>
-    {isCam && <Camera/>}
-    {isText && <ChatBot steps={steps} />}
-  </div>
+      <button className='emo-btn' onClick={toggleCam}>Use Camera</button>
+      <button className='emo-btn' onClick={toggleText}>Use text</button>
+      {isCam && <Camera />}
+      {isText && <ThemeProvider theme={theme}><ChatBot className="chatbot" headerTitle="Check In bot"steps={steps} {...config}/></ThemeProvider> }
+    </div>
   )
 }
