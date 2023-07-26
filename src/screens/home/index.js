@@ -7,6 +7,7 @@ import Trending from '../trending';
 import './home.css';
 import Sidebar from '../../components/sidebar';
 import Emotions from '../emotions';
+import Login from '../auth/login';
 export default function Home() {
   return (
     <Router>
