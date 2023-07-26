@@ -7,12 +7,9 @@ import Trending from '../trending';
 import './home.css';
 import Sidebar from '../../components/sidebar';
 import Emotions from '../emotions';
-import Login from '../auth/login/login';
+import Login from '../auth/login';
 export default function Home() {
-  const token = true;
-  return !token ? (
-    <Login />
-  ) :  (
+  return (
     <Router>
         <div className='main-body'>
           <Sidebar/>
