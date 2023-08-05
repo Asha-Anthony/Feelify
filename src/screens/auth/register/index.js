@@ -26,7 +26,7 @@ export default function Register (props){
             res.json().then((data) => {
                 // Setting a data from api
                 console.log(data)
-                if (data.success==true){
+                if (data.success===true){
                     setLog(true);
                     console.log(loggedIn)
                   }
@@ -49,7 +49,7 @@ export default function Register (props){
 
     return (
         <div>
-      { loggedIn ? (<Home/>):(
+      { loggedIn ? (<Home username ={ uname}/>):(
         <div className="auth-form-container">
             <h2>Register</h2>
         <form className="register-form" onSubmit={handleSubmit}>

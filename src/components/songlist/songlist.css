@@ -1,4 +1,4 @@
-.song {
+/* .song {
     display: flex;
     align-items: center;
     margin-bottom: 15px;
@@ -30,3 +30,58 @@
     margin: 0;
     color: #777777;
   }
+   */
+
+   .song-body{
+    width: 94%;
+    height:90%;
+    padding:3%;
+    display :flex;
+    flex-wrap:wrap;
+    overflow-y: auto;
+    justify-content: space-between;
+}
+
+.playlist-card{
+  position: relative;
+  width :25%;
+  height:35%;
+  border-radius: 20px;
+  border: 1px solid rgba(54,69,98,0.18) ;
+  padding: 1%;
+  margin-bottom: 2%;
+  background: rgb(227,226,223);
+background: linear-gradient(90deg, rgba(227,226,223,1) 0%, rgba(191,186,171,1) 100%);
+transition: all 0.2s ease;
+cursor: pointer;
+}
+
+.playlist-image{
+  aspect-ratio: 1;
+  width: 300px;
+  height:200px;
+  border-radius: 20px;
+}
+
+.playlist-card:hover{
+  transform: scale(1.02);
+}
+
+.playlist-title{
+  font-weight:  800;
+  font-size :16px;
+  color: #5d001e;
+  margin:10px 0px 0px;
+
+}
+
+.playlist-subtitle{
+  font-weight: 400;
+  font-size: 12px;
+  color: #5c5b59;
+}
+
+.playlist-play{
+  width:40px;
+  height: 40px;
+}
