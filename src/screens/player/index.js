@@ -1,5 +1,6 @@
 import React from 'react';
 import PlayMusic from '../../components/playmusic';
+import './player.css'
 
 export default function Player() {
  
