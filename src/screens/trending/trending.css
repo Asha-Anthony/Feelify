@@ -1,0 +1,17 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .playlist-grid {
+    
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .song-list {
+    list-style: none;
+    padding: 0;
+  }
+  

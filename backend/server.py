@@ -48,7 +48,39 @@ def addUser():
     email = request.json['email']
     currentCollection.insert_one({'first_name' : first_name, 'last_name' : last_name ,'password': password ,'email' :email, 'username':username}) ;
     return jsonify({"success": True, "message": "User added successfully"})
+
+@app.route('/getSongs', methods = ['GET'])
+def getSongs():
+    currentCollection = mongo.db.Trending
+    songs = currentCollection.find()
+
+    song_list = []
+    for song in songs:
+        song_item = {
+            "_id": str(song["_id"]),
+            "song": song["song"],
+            "song_name": song["song_name"],
+            "song_id": song["song_id"],
+            "thumbnail": song["thumbnail"],
+            "duration": song["duration"],
+            "emotion": song["emotion"]
+        }
+        song_list.append(song_item)
+
+    return jsonify(song_list), 200
      
+@app.route('/get_songs/<username>', methods=['GET'])
+def get_songs(username):
+    currentCollection = mongo.db.Personel
+    songs = currentCollection.find({'username': username})
+    song_list = []
+    for song in songs:
+        song_item = {
+            "song_id": song["song_id"],
+        }
+        song_list.append(song_item)
+
+    return jsonify(song_list), 200
 
      
 # Running app
