@@ -3,7 +3,8 @@ from flask import Flask, jsonify, request, redirect
 from flask.helpers import url_for
 from flask_pymongo import PyMongo
 from flask_cors import CORS, cross_origin
-
+from bson import ObjectId
+import json
  
 # Initializing flask app
 app = Flask(__name__)
@@ -12,6 +13,12 @@ app.config['MONGO_URI'] = 'mongodb+srv://rakshita:rakshita@cluster0.s48j0ve.mong
 app.config['CORS_Headers'] = 'Content-Type'
 
 mongo = PyMongo(app)
+
+class JSONEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, ObjectId):
+            return str(o)  # Convert ObjectId to string
+        return json.JSONEncoder.default(self, o)
 
  
 # Route for seeing a data
@@ -72,15 +79,24 @@ def getSongs():
 @app.route('/get_songs/<username>', methods=['GET'])
 def get_songs(username):
     currentCollection = mongo.db.Personel
-    songs = currentCollection.find({'username': username})
+    songs = currentCollection.find({"username": username})
     song_list = []
     for song in songs:
         song_item = {
             "song_id": song["song_id"],
         }
         song_list.append(song_item)
+        
+    trendingCollection = mongo.db.Trending
+    trending_songs = []
+    for song in song_list:
+        song_id_str = str(song["song_id"])  # Convert ObjectId to string
+        song_data = trendingCollection.find_one({"song_id": song_id_str})
+        if song_data:
+            trending_songs.append(song_data)
 
-    return jsonify(song_list), 200
+    response = JSONEncoder().encode(trending_songs)
+    return response, 200
 
      
 # Running app

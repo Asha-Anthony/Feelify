@@ -8,7 +8,10 @@ export default function Library(props) {
   const [songs , setSongs] = useState([])
 
   async function fetchPSongs(){
-    fetch("http://127.0.0.1:5000/get_songs/${props.username}", {
+    console.log(props.username);
+    const link = "http://127.0.0.1:5000/get_songs/"+props.username;
+
+    fetch(link, {
       method: 'GET',
       headers: {
         'Content-type': 'application/json' 
@@ -16,6 +19,7 @@ export default function Library(props) {
     }).then((res) =>
         res.json().then((data) => {
             // Setting a data from api
+            console.log("in library")
             console.log(data);
             setSongs(data)
   
@@ -41,7 +45,7 @@ export default function Library(props) {
       <div className="library-body">
       {
         songs?.map((songs)=>(
-          <div className="playlist-card"  key ={songs.id} onClick={ ()=>playPlaylist(songs.id) }>
+          <div className="playlist-card"  key ={songs._id} onClick={ ()=>playPlaylist(songs.song) }>
             {/* <img  src={songs.thumbnail} className ="playlist-image" alt="Playlist-Art"/> */}
             <p className="playlist-title">{songs.id}</p>
             <p className="playlist-subtitle"> Songs</p>
