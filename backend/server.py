@@ -5,12 +5,14 @@ from flask_pymongo import PyMongo
 from flask_cors import CORS, cross_origin
 from bson import ObjectId
 import json
+import os
  
 # Initializing flask app
 app = Flask(__name__)
 cors = CORS(app)
 app.config['MONGO_URI'] = 'mongodb+srv://rakshita:rakshita@cluster0.s48j0ve.mongodb.net/FeelifyDB'
 app.config['CORS_Headers'] = 'Content-Type'
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024 
 
 mongo = PyMongo(app)
 
@@ -97,6 +99,31 @@ def get_songs(username):
 
     response = JSONEncoder().encode(trending_songs)
     return response, 200
+
+
+UPLOAD_FOLDER = 'uploaded_images'  # Folder where the uploaded images will be stored
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+@app.route('/upload', methods=['POST'])
+def upload_to_local_drive():
+
+    if 'image' not in request.files:
+        return jsonify({'error': 'No image part in the request'}), 400
+
+    image_file = request.files['image']
+
+    if image_file.filename == '':
+        return jsonify({'error': 'No selected file'}), 400
+
+    if not os.path.exists(app.config['UPLOAD_FOLDER']):
+        os.makedirs(app.config['UPLOAD_FOLDER'])
+    # Save the uploaded image to the server
+    if image_file:
+        filename = image_file.filename
+        filepath = os.path.join(app.config['UPLOAD_FOLDER'],'latest.jpg').replace('\\', '/')
+        image_file.save(filepath)
+        return jsonify({"message": "Image uploaded successfully", "file_path": filepath}), 200
+    else:
+        return jsonify({"error": "Failed to upload image"}), 500
 
      
 # Running app
