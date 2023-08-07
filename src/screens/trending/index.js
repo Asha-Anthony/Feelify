@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import SongList from '../../components/songlist';
-import './trending.css'
+// import './trending.css'
 export default function Trending() {
   const [songs , setSongs] = useState([])
 
@@ -31,11 +31,8 @@ async function fetchSongs(){
 
 
   return (
-    <div className="playlist-grid">
-       <div className="song-list">
      <SongList songs={songs} /> 
-  </div>
-  </div>
+
   )
 }
 
