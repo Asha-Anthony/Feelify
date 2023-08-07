@@ -10,9 +10,10 @@ button {
     align-items: center;
     
   }
-.display{
-    height: 600px;
-    width: 600px;
+
+img{
+    height: 600;
+    width: 600;
     margin   :20px;
     margin-top: 95px;
 }

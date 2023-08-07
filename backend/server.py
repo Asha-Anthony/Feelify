@@ -100,6 +100,14 @@ def get_songs(username):
     response = JSONEncoder().encode(trending_songs)
     return response, 200
 
+@app.route('/fetchThumb/<song>', methods=['GET'])
+def get_thumbnail(song):
+    collection = mongo.db.Trending
+    song_data = collection.find_one({'song': song})
+    if song_data:
+        return jsonify({'thumbnail': song_data['thumbnail']})
+    else:
+        return jsonify({'message': 'Song not found'}), 404
 
 UPLOAD_FOLDER = 'uploaded_images'  # Folder where the uploaded images will be stored
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
