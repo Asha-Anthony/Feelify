@@ -1,6 +1,7 @@
 
 export const playlist =  [
   {
+    "id":1,
     "name": "Happy",
     "total":20,
     "thumbnail": "https://e1.pxfuel.com/desktop-wallpaper/213/149/desktop-wallpaper-sunset-spotify-playlist-cover-spotify-covers-thumbnail.jpg",
@@ -23,6 +24,7 @@ export const playlist =  [
     ]
   },
   {
+    "id":2,
     "name": "Sad",
     "total":40,
     "thumbnail": "https://i.pinimg.com/236x/f5/db/5f/f5db5fbdb2d24bc83d8bebabbb6c4540.jpg",
@@ -45,6 +47,7 @@ export const playlist =  [
     ]
   },
   {
+    "id":3,
     "name": "Energetic",
     "total":10,
     "thumbnail": "https://e1.pxfuel.com/desktop-wallpaper/22/826/desktop-wallpaper-aesthetics-vibes-playlist-cover-playlist-covers-thumbnail.jpg",
@@ -67,6 +70,7 @@ export const playlist =  [
     ]
   },
   {
+    "id":4,
     "name": "Relaxed",
     "total":29,
     "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSWD1Yryy1Jfy8RemgmQEbglv8Ows6J1ifs3g&usqp=CAU",
@@ -89,6 +93,7 @@ export const playlist =  [
     ]
   },
   {
+    "id":5,
     "name": "Upbeat",
     "total":5,
     "thumbnail": "https://www.musicinminnesota.com/wp-content/uploads/2022/01/Photo-from-Adobe-Stock.jpg",
@@ -111,6 +116,7 @@ export const playlist =  [
     ]
   },
   {
+    "id":6,
     "name": "Chill",
     "total":24,
     "thumbnail": "https://i.pinimg.com/736x/3a/06/a9/3a06a9236b8ef1265a7fa0181c32bc68.jpg",

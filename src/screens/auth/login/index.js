@@ -20,7 +20,7 @@ export default function Login(props){
             // Setting a data from api
             console.log(data.success)
 
-            if (data.success==true){
+            if (data.success===true){
               setLog(true);
               console.log(loggedIn)
             }
@@ -44,7 +44,7 @@ export default function Login(props){
 
     return (
       <div>
-      { loggedIn ? (<Home/>):(
+      { loggedIn ? (<Home username ={ user}/>):(
         <div className="auth-form-container">
             <h2>Login</h2>
             <form className="login-form" onSubmit={handleSubmit}>

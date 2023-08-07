@@ -7,8 +7,7 @@ import Trending from '../trending';
 import './home.css';
 import Sidebar from '../../components/sidebar';
 import Emotions from '../emotions';
-import Login from '../auth/login';
-export default function Home() {
+export default function Home(props) {
   return (
     <Router>
         <div className='main-body'>
@@ -18,7 +17,7 @@ export default function Home() {
             <Route path="/player" element={<Player/>}/>
             <Route path="/trending" element={<Trending/>}/>
             <Route path="/emotions" element={<Emotions/>}/>
-            <Route path="/library" element={<Library/>}/>
+            <Route path="/library" element={<Library username={props.username}/>}/>
         </Routes>
         </div>
     </Router>
