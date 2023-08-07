@@ -46,7 +46,7 @@ export default function Library(props) {
       {
         songs?.map((songs)=>(
           <div className="playlist-card"  key ={songs._id} onClick={ ()=>playPlaylist(songs.song) }>
-            {/* <img  src={songs.thumbnail} className ="playlist-image" alt="Playlist-Art"/> */}
+             <img  src={songs.thumbnail} className ="playlist-image" alt="Playlist-Art"/>
             <p className="playlist-title">{songs.id}</p>
             <p className="playlist-subtitle"> Songs</p>
             <div className="playlist-fade">
