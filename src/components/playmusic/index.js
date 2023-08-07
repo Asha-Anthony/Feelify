@@ -1,10 +1,10 @@
 import React from 'react';
-import { useEffect, useState , useRef } from "react"; 
-import useSound from "use-sound"; 
+import { useEffect, useState, useRef } from "react";
+import useSound from "use-sound";
 //import music from './tomorrow.mp3'; 
-import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai"; 
-import { BiSkipNext, BiSkipPrevious } from "react-icons/bi"; 
-import { IconContext } from "react-icons"; 
+import { AiFillPlayCircle, AiFillPauseCircle } from "react-icons/ai";
+import { BiSkipNext, BiSkipPrevious } from "react-icons/bi";
+import { IconContext } from "react-icons";
 import "./playmusic.css";
 
 export default function PlayMusic(props) {
@@ -13,7 +13,7 @@ export default function PlayMusic(props) {
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
 
-  const link = "https://docs.google.com/uc?export=download&id="+props.id;
+  const link = "https://docs.google.com/uc?export=download&id=" + props.id;
 
   const handlePlayPause = () => {
     if (isPlaying) {
@@ -38,20 +38,84 @@ export default function PlayMusic(props) {
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
 
+  const [thumbnail , setThumb] = useState([])
+
+  async function fetchThumb(){
+    const link1 = "http://127.0.0.1:5000/fetchThumb/"+props.id;
+    fetch(link1, {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json' 
+      }
+    }).then((res) =>
+        res.json().then((data) => {
+            // Setting a data from api
+            console.log(data.thumbnail);
+            setThumb(data.thumbnail)
+  
+          
+        })
+    );
+     
+  
+    }
+  
+    useEffect(() => {
+      // Using fetch to fetch the api from
+      // flask server it will be redirected to proxy
+      fetchThumb()
+  }, []);
+
 
 
   return (
-    <div>
-      <audio
-        ref={audioRef}
-        src={link}
-        onTimeUpdate={handleTimeUpdate}
-        onLoadedData={handleLoadedData}
-      ></audio>
-      <button onClick={handlePlayPause}>{isPlaying ? 'Pause' : 'Play'}</button>
+
+
+
+    <div className="card">
+      <h2>Playing Now</h2>
+      <img
+        className="musicCover"
+        src={thumbnail}
+      />
       <div>
-        <span>{formatTime(currentTime)}</span> / <span>{formatTime(duration)}</span>
+        <h3 className="title">Tomorrow</h3>
+        <p className="subTitle">Sad</p>
+      </div>
+      <div>
+        <audio
+          ref={audioRef}
+          src={link}
+          onTimeUpdate={handleTimeUpdate}
+          onLoadedData={handleLoadedData}
+        ></audio>
+         
+        {!isPlaying ? (
+          <button className="playButton" onClick={handlePlayPause}>
+            <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+              <AiFillPlayCircle />
+            </IconContext.Provider>
+          </button>
+        ) : (
+          <button className="playButton" onClick={handlePlayPause}>
+            <IconContext.Provider value={{ size: "3em", color: "#27AE60" }}>
+              <AiFillPauseCircle />
+            </IconContext.Provider>
+          </button>
+        )}
+        <div className="time">
+          <p>
+            {formatTime(currentTime)}
+          </p>
+          <p>
+            {formatTime(duration)}
+          </p>
+        </div>
       </div>
     </div>
+
+
+
+
   );
 }

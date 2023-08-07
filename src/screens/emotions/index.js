@@ -4,6 +4,7 @@ import Camera from '../../components/camera/camera';
 import "./emotions.css";
 import ChatBot from 'react-simple-chatbot';
 import { ThemeProvider } from 'styled-components';
+import bot from './bot.png'
 const steps = [
   {
     id: '0',
@@ -32,7 +33,7 @@ const steps = [
 
 ];
 const config = {
-  botAvatar: ".//bot.jpg",
+  botAvatar: {bot},
   
 };
 const theme = {
@@ -68,11 +69,22 @@ export default function Emotions() {
   }
   return (
     <div className='screen-container'>
+      <div class="split left">
+  <div class="centered">
+ 
+  {isCam ?(<Camera />):( <button className='emo-btn' onClick={toggleCam}>Use Camera</button>)}
+  </div>
+</div>
 
-      <button className='emo-btn' onClick={toggleCam}>Use Camera</button>
-      <button className='emo-btn' onClick={toggleText}>Use text</button>
-      {isCam && <Camera />}
-      {isText && <ThemeProvider theme={theme}><ChatBot className="chatbot" headerTitle="Check In bot"steps={steps} {...config}/></ThemeProvider> }
+<div class="split right">
+  <div class="centered">
+  {isText? (<ThemeProvider theme={theme}><ChatBot className="chatbot" headerTitle="Check In bot"steps={steps} /></ThemeProvider> ):(  <button className='emo-btn' onClick={toggleText}>Use text</button>)}
+  </div>
+</div>
+
+  
+    
+     
     </div>
   )
 }

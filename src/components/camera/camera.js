@@ -65,8 +65,8 @@ export default function Camera() {
     )}
     <div className="btn-container">
     {imgSrc ? (
-          <><button onClick={reclick}>RECLICK !</button>
-          <button onClick={handleUpload}>Upload</button>
+          <><button onClick={reclick}>RECLICK</button> &nbsp;&nbsp;
+          <button onClick={handleUpload}>UPLOAD</button>
           </>
         
         ) : (
