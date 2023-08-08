@@ -10,15 +10,16 @@ import Sidebar from '../../components/sidebar';
 import Emotions from '../emotions';
 import Login from '../auth/login';
 export default function Home(props) {
+  console.log(props)
   return (
     <Router>
         <div className='main-body'>       
           <Sidebar/>
         <Routes>
-            <Route path="/" element={<Emotions/>}/>
+            <Route path="/" element={<Emotions username={props.username}/>}/>
             <Route path="/player" element={<Player/>}/>
             <Route path="/trending" element={<Trending/>}/>
-            <Route path="/emotions" element={<Emotions/>}/>
+            <Route path="/emotions" element={<Emotions username={props.username}/>}/>
             <Route path="/library" element={<Library username={props.username}/>}/>
            
         </Routes>

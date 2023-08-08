@@ -143,13 +143,32 @@ def upload_to_local_drive():
         if songs:
             random_song = random.choice(songs)
             song_url = random_song.get("song")
+            song_id = random_song.get("song_id")
             print(song_url)
 
-            return jsonify({"message": "Image uploaded successfully", "file_path": filepath,"emotion":dominant_emotion,"song":song_url}), 200
+            return jsonify({"message": "Image uploaded successfully", "file_path": filepath,"emotion":dominant_emotion,"song":song_url,"song_id":song_id}), 200
         else:
             return jsonify({"error": "Failed to upload image"}), 500
 
-     
+@app.route('/add_to_personal_collection', methods=['POST'])
+def add_to_personal_collection():
+    data = request.json
+    collection = mongo.db.Personel
+    username = data.get("username")
+    song_id = data.get("song_id")
+    
+    if not username or not song_id:
+        return jsonify({"message": "Both username and song_id are required."}), 400
+    
+    new_row = {
+        "username": username,
+        "song_id": song_id
+    }
+    
+    collection.insert_one(new_row)
+    
+    return jsonify({"message": "Row added to personal collection successfully."})   
+
 # Running app
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

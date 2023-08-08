@@ -47,38 +47,39 @@ const theme = {
   userFontColor: '#e3afbc',
 };
 
-export default function Emotions() {
-
-
+export default function Emotions(props) {
 
 
   const [isCam, setIsCam] = useState(false);
   const [isText, setIsText] = useState(false);
+  const[username , setUname ] = useState();
 
   function toggleCam() {
     setIsCam((isCam) => !isCam);
     if (!isCam) {
       setIsText((false));
     }
+    setUname(props.username);
   }
   function toggleText() {
     setIsText((isText) => !isText);
     if (!isText) {
       setIsCam((false));
     }
+    setUname(props.username);
   }
   return (
     <div className='screen-container'>
       <div class="split left">
   <div class="centered">
  
-  {isCam ?(<Camera />):( <button className='emo-btn' onClick={toggleCam}>Use Camera</button>)}
+  {isCam ?(<Camera username={username} />):( <button className='emo-btn' onClick={toggleCam}>USE CAMERA</button>)}
   </div>
 </div>
 
 <div class="split right">
   <div class="centered">
-  {isText? (<ThemeProvider theme={theme}><ChatBot className="chatbot" headerTitle="Check In bot"steps={steps} /></ThemeProvider> ):(  <button className='emo-btn' onClick={toggleText}>Use text</button>)}
+  {isText? (<ThemeProvider theme={theme}><ChatBot className="chatbot" headerTitle="Check In bot"steps={steps} /></ThemeProvider> ):(  <button className='emo-btn' onClick={toggleText}>USE TEXT</button>)}
   </div>
 </div>
 
