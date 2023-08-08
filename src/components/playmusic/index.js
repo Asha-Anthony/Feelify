@@ -38,7 +38,8 @@ export default function PlayMusic(props) {
     return `${minutes}:${seconds.toString().padStart(2, '0')}`;
   };
 
-  const [thumbnail , setThumb] = useState([])
+  const [thumbnail , setThumb] = useState([]);
+  const [emotion , setEmotion] = useState([]);
 
   async function fetchThumb(){
     const link1 = "http://127.0.0.1:5000/fetchThumb/"+props.id;
@@ -52,6 +53,7 @@ export default function PlayMusic(props) {
             // Setting a data from api
             console.log(data.thumbnail);
             setThumb(data.thumbnail)
+            setEmotion(data.emotion)
   
           
         })
@@ -79,8 +81,7 @@ export default function PlayMusic(props) {
         src={thumbnail}
       />
       <div>
-        <h3 className="title">Tomorrow</h3>
-        <p className="subTitle">Sad</p>
+        <h3 className="subTitle">{emotion}</h3>
       </div>
       <div>
         <audio

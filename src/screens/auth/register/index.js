@@ -51,7 +51,7 @@ export default function Register (props){
         <div>
       { loggedIn ? (<Home username ={ uname}/>):(
         <div className="auth-form-container">
-            <h2>Register</h2>
+            <h2>Feelify Register</h2>
         <form className="register-form" onSubmit={handleSubmit}>
             <label htmlFor="name">Full name</label>
             <input value={name} name="name" onChange={(e) => setName(e.target.value)} id="name" placeholder="full Name" />

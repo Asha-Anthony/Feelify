@@ -106,7 +106,8 @@ def get_thumbnail(song):
     collection = mongo.db.Trending
     song_data = collection.find_one({'song': song})
     if song_data:
-        return jsonify({'thumbnail': song_data['thumbnail']})
+        return jsonify({'thumbnail': song_data['thumbnail'],
+                        'emotion':song_data['emotion']})
     else:
         return jsonify({'message': 'Song not found'}), 404
 
