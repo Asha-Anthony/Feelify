@@ -3,10 +3,7 @@ import Webcam from "react-webcam";
 import { useRef , useState } from "react";
 import { useNavigate } from "react-router-dom";
 import './camera.css';
-import {
-  PopupboxManager,
-  PopupboxContainer
-} from 'react-popupbox';
+
 
 
 export default function Camera(props) {
