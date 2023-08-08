@@ -8,7 +8,7 @@ import {MdEmojiEmotions} from "react-icons/md";
 export default function Sidebar() {
   return (
     <div className='sidebar'>
-      <img src="https://burst.shopifycdn.com/photos/profile-of-a-woman-wearing-bold-black-sunglasses.jpg?width=373&format=pjpg&exif=1&iptc=1"
+      <img src="https://docs.google.com/uc?export=download&id=1MfF10UXbdsstjaxbph_sWqx3dLD0z-yP"
        className='display-picture' alt="profile"/>
       <div>
         <SidebarButton title="Emotion" to="/emotions" icon={<MdEmojiEmotions/>}/>
@@ -16,7 +16,7 @@ export default function Sidebar() {
         <SidebarButton title="Library" to="/library" icon={<IoLibrary/>}/>
         <SidebarButton title="Player" to="/player" icon={<FaPlay/>}/>
       </div>
-      <SidebarButton title="Sign Out" to="" icon={<FaSignOutAlt/>}/>
+      <SidebarButton title="Sign Out" to="http://localhost:3000/auth/login" icon={<FaSignOutAlt/>}/>
     </div>
   )
 }

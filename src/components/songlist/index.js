@@ -17,8 +17,7 @@ const SongList = ({ songs }) => {
         songs?.map((songs)=>(
           <div className="playlist-card"  key ={songs._id} onClick={ ()=>playPlaylist(songs.song) }>
              <img  src={songs.thumbnail} className ="playlist-image" alt="Playlist-Art"/>
-            <p className="playlist-title">{songs.id}</p>
-            <p className="playlist-subtitle"> Songs</p>
+            <p className="playlist-subtitle">{songs.emotion}</p>
             <div className="playlist-fade">
             <img className="playlist-play" alt="play-icon" src ="https://uploads-ssl.webflow.com/5fc56861e9c9af05f5f079ab/6021aba5e20d307631bda1ff_Icon%20Burgundy%20Video.png"/></div>
             </div>
