@@ -46,7 +46,7 @@ export default function Login(props){
       <div>
       { loggedIn ? (<Home username ={ user}/>):(
         <div className="auth-form-container">
-            <h2>Login</h2>
+            <h2> Feelify Login</h2>
             <form className="login-form" onSubmit={handleSubmit}>
                 <label htmlFor="user">Username</label>
                 <input value={user} onChange={(e) => setUser(e.target.value)}type="text" placeholder="" id="user" name="user" />
