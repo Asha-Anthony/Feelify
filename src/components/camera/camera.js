@@ -9,13 +9,14 @@ import {
 } from 'react-popupbox';
 
 
-export default function Camera() {
+export default function Camera(props) {
 
     const webCamRef = useRef(null);
     const[ imgSrc , setImage ] = useState(null);
     const[emotion , setEmotion] = useState();
     const[flag , setFlag] = useState(false);
     const[url,setUrl] = useState();
+    const[id,setID] = useState();
 
     const click = useCallback(()=>{
         const imgSrc = webCamRef.current.getScreenshot();
@@ -52,6 +53,7 @@ export default function Camera() {
           setFlag(true);
           console.log(data.song);
           setUrl(data.song);
+          setID(data.song_id)
         })
         .catch((error) => {
           console.error('Error uploading image:', error);
@@ -73,6 +75,28 @@ export default function Camera() {
     const playPlaylist = (id) =>{
         navigate("/player",{state:{id:id}});
     }
+
+
+
+    
+    const add =() =>{
+      console.log("in add"+props.username)
+      fetch("http://127.0.0.1:5000//add_to_personal_collection", {
+        method: 'POST',
+        body: JSON.stringify({
+          username: props.username,
+          song_id:id,
+        }), 
+        headers: {
+          'Content-type': 'application/json' 
+        }
+      }).then((res) =>
+          res.json().then((data) => {
+              console.log(data)
+          })
+      );
+       
+  }
   return (
     <div className="container">
    {
@@ -80,9 +104,7 @@ export default function Camera() {
     flag ? (
       <>
           <h2> You seem {emotion}</h2>
-          <br></br>
-          <button onClick={()=>playPlaylist(url)}>GO TO TUNE</button>
-          <br></br><br></br>
+
       </>
     ) : (
       <div className='display'>
@@ -95,9 +117,21 @@ export default function Camera() {
 }
     <div className="btn-container">
     {imgSrc ? (
-          <><button onClick={reclick}>RECLICK</button> &nbsp;&nbsp;
-          <button onClick={handleUpload}>UPLOAD</button>
-          </>
+          flag ? (
+            <>
+          <button onClick={()=>playPlaylist(url)}>GO TO TUNE</button>&nbsp;&nbsp;
+          <button onClick={()=>add()}>ADD TO LIBRARY</button>
+          <br></br><br></br>
+            <button onClick={reclick}>RECLICK</button>
+
+            </>
+          ) : (
+            <><button onClick={reclick}>RECLICK</button> &nbsp;&nbsp;
+            <button onClick={handleUpload}>UPLOAD</button>
+            </>
+          )
+
+
         
         ) : (
           <button onClick={click}>CLICK!</button>
