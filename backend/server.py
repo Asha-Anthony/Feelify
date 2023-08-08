@@ -6,6 +6,7 @@ from flask_cors import CORS, cross_origin
 from bson import ObjectId
 import json
 import os
+from deepface import DeepFace
  
 # Initializing flask app
 app = Flask(__name__)
@@ -129,6 +130,15 @@ def upload_to_local_drive():
         filename = image_file.filename
         filepath = os.path.join(app.config['UPLOAD_FOLDER'],'latest.jpg').replace('\\', '/')
         image_file.save(filepath)
+        print("Checking emotion")
+        # result = DeepFace.analyze(image_file,
+        #                         actions = ['emotion'])
+        
+        analysis = DeepFace.analyze(img_path = "./uploaded_images/latest.jpg", actions = ["emotion"])
+
+        
+        print(analysis)
+
         return jsonify({"message": "Image uploaded successfully", "file_path": filepath}), 200
     else:
         return jsonify({"error": "Failed to upload image"}), 500
