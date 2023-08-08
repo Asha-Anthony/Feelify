@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+## Step 1: Cloning the Repository
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+1. Open your terminal or command prompt.
+2. Navigate to the directory where you want to store the project.
+3. Clone the repository using the following command:
 
-## Available Scripts
+git clone <repository_url>
 
-In the project directory, you can run:
+## Step 2: Installing Dependencies
 
-### `npm start`
+1. Open your terminal or command prompt.
+2. Navigate to the root folder of the cloned project using the `cd` command.
+3. Once you are in the root folder, run the following command to install the required dependencies for the React app:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+npm install
+This will install all the necessary libraries and packages specified in the package.json file.
 
-### `npm test`
+## Step 3: Running the Python Server
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Open a new terminal or command prompt window.
+2. Navigate to the directory where the Python server code is located. It is inside the `backend` folder.
+3. Run the following command to start the Python server:
+python server.py
+Make sure that the server is up and running without any errors.
 
-### `npm run build`
+## Step 4: Starting the React App
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. Go back to the terminal or command prompt window where you installed the npm packages (from Step 2).
+2. In the same terminal window, run the following command to start the React app:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+npm start
+This will start the development server for the React app.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Step 5: Accessing the Application
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. After running the `npm start` command, a new browser window or tab should automatically open, displaying the React app.
+2. If the browser doesn't open automatically, you can manually open your preferred web browser and navigate to `http://localhost:3000`.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Step 6: Interacting with the Application
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. You should now see the application running in your browser.
+2. Explore the various features and functionalities of the application. The app will analyze your emotion and generate music for you which might be suitable for your current mood.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+If you encounter any issues during the setup process, make sure to check for any error messages in the terminal or command prompt windows for troubleshooting.
