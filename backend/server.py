@@ -7,6 +7,7 @@ from bson import ObjectId
 import json
 import os
 from deepface import DeepFace
+import random
  
 # Initializing flask app
 app = Flask(__name__)
@@ -136,13 +137,17 @@ def upload_to_local_drive():
         #                         actions = ['emotion'])
         
         analysis = DeepFace.analyze(img_path = "./uploaded_images/latest.jpg", actions = ["emotion"])
+        dominant_emotion = analysis[0]['dominant_emotion']
+        collection = mongo.db.Trending
+        songs = list(collection.find({"emotion": dominant_emotion}))
+        if songs:
+            random_song = random.choice(songs)
+            song_url = random_song.get("song")
+            print(song_url)
 
-        
-        print(analysis)
-
-        return jsonify({"message": "Image uploaded successfully", "file_path": filepath}), 200
-    else:
-        return jsonify({"error": "Failed to upload image"}), 500
+            return jsonify({"message": "Image uploaded successfully", "file_path": filepath,"emotion":dominant_emotion,"song":song_url}), 200
+        else:
+            return jsonify({"error": "Failed to upload image"}), 500
 
      
 # Running app
