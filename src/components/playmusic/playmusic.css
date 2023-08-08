@@ -5,7 +5,7 @@ body {
   
  
   
-  .card{
+  .pcard{
     background-color: white;
     width: 25%;
     max-width: 600px;
@@ -22,8 +22,8 @@ body {
   
   .musicCover {
     border-radius: 10%;
-    width: 200px;
-    height: 250px;
+    width: 55%;
+    height: 55%;
   }
   
   .playButton {
@@ -33,7 +33,7 @@ body {
   }
   
   .subTitle {
-    margin-top: -1em;
+    margin-top: 1em;
     color: #4f4f4f;
   }
   

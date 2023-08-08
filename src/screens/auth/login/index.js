@@ -11,13 +11,12 @@ export default function Login(props){
       body: JSON.stringify({
         username: user,
         password: pass,
-      }), // The data
+      }), 
       headers: {
         'Content-type': 'application/json' 
       }
     }).then((res) =>
         res.json().then((data) => {
-            // Setting a data from api
             console.log(data.success)
 
             if (data.success===true){
@@ -31,8 +30,6 @@ export default function Login(props){
     }
 
     useEffect(() => {
-      // Using fetch to fetch the api from
-      // flask server it will be redirected to proxy
       validateUser()
   }, []);
 

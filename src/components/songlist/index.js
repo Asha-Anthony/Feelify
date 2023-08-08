@@ -15,12 +15,14 @@ const SongList = ({ songs }) => {
       <div className="library-body">
       {
         songs?.map((songs)=>(
-          <div className="playlist-card"  key ={songs._id} onClick={ ()=>playPlaylist(songs.song) }>
-             <img  src={songs.thumbnail} className ="playlist-image" alt="Playlist-Art"/>
-            <p className="playlist-subtitle">{songs.emotion}</p>
-            <div className="playlist-fade">
-            <img className="playlist-play" alt="play-icon" src ="https://uploads-ssl.webflow.com/5fc56861e9c9af05f5f079ab/6021aba5e20d307631bda1ff_Icon%20Burgundy%20Video.png"/></div>
-            </div>
+        <div class="card"key ={songs._id} onClick={ ()=>playPlaylist(songs.song)}>
+          <img className="limg" src={songs.thumbnail} alt="Cover" />
+          <div class="container">
+          <h4 className="text"><b>{songs.emotion}</b></h4>
+          <img className="playlist-play" alt="play-icon" src ="https://uploads-ssl.webflow.com/5fc56861e9c9af05f5f079ab/6021aba5e20d307631bda1ff_Icon%20Burgundy%20Video.png"/>
+
+          </div>
+          </div>
                    ))
                   }
                 </div>

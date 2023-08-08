@@ -1,11 +1,21 @@
 import React, { useCallback } from 'react'
 import Webcam from "react-webcam";
-import { useRef , useState} from "react";
+import { useRef , useState } from "react";
+import { useNavigate } from "react-router-dom";
 import './camera.css';
+import {
+  PopupboxManager,
+  PopupboxContainer
+} from 'react-popupbox';
+
+
 export default function Camera() {
 
     const webCamRef = useRef(null);
     const[ imgSrc , setImage ] = useState(null);
+    const[emotion , setEmotion] = useState();
+    const[flag , setFlag] = useState(false);
+    const[url,setUrl] = useState();
 
     const click = useCallback(()=>{
         const imgSrc = webCamRef.current.getScreenshot();
@@ -14,6 +24,7 @@ export default function Camera() {
 
     const reclick =() =>{
         setImage(null);
+        setFlag(false)
     }
 
     const handleUpload = () => {
@@ -37,6 +48,10 @@ export default function Camera() {
         .then((data) => {
           console.log('Image uploaded successfully:', data);
           // You can handle the server response here, if needed
+          setEmotion(data.emotion);
+          setFlag(true);
+          console.log(data.song);
+          setUrl(data.song);
         })
         .catch((error) => {
           console.error('Error uploading image:', error);
@@ -54,15 +69,30 @@ export default function Camera() {
       }
       return new Blob([ab], { type: mimeString });
     };
-
+    const navigate = useNavigate();
+    const playPlaylist = (id) =>{
+        navigate("/player",{state:{id:id}});
+    }
   return (
     <div className="container">
-    {imgSrc ? (
-        <div className='display'>
-      <img src={imgSrc} alt="webcam" /></div>
+   {
+  imgSrc ? (
+    flag ? (
+      <>
+          <h2> You seem {emotion}</h2>
+          <br></br>
+          <button onClick={()=>playPlaylist(url)}>GO TO TUNE</button>
+          <br></br><br></br>
+      </>
     ) : (
-      <Webcam className='cam' height={600} width={600} ref={webCamRef} mirrored={true} screenshotFormat="image/jpeg" />
-    )}
+      <div className='display'>
+        <img  className="wimg"src={imgSrc} alt="webcam" />
+      </div>
+    )
+  ) : (
+    <Webcam className='cam' height={600} width={600} ref={webCamRef} mirrored={true} screenshotFormat="image/jpeg" />
+  )
+}
     <div className="btn-container">
     {imgSrc ? (
           <><button onClick={reclick}>RECLICK</button> &nbsp;&nbsp;

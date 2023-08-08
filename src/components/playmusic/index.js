@@ -74,7 +74,7 @@ export default function PlayMusic(props) {
 
 
 
-    <div className="card">
+    <div className="pcard">
       <h2>Playing Now</h2>
       <img
         className="musicCover"

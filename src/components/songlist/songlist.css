@@ -7,47 +7,32 @@
   overflow-y: auto;
   justify-content: space-between;
 }
-
-.playlist-card{
-  position: relative;
-  width :25%;
-  height:35%;
-  border-radius: 20px;
-  border: 1px solid rgba(54,69,98,0.18) ;
-  padding: 1%;
-  margin-bottom: 2%;
-  background: rgb(227,226,223);
-background: linear-gradient(90deg, rgba(227,226,223,1) 0%, rgba(191,186,171,1) 100%);
-transition: all 0.2s ease;
-cursor: pointer;
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  border-radius: 5px;
+  height:45%;
+  background-color: white;
 }
 
-.playlist-image{
-  aspect-ratio: 1;
-  width: 300px;
-  height:200px;
-  border-radius: 20px;
+.text{
+  color: black;
+}
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
-.playlist-card:hover{
-  transform: scale(1.02);
+.container {
+  padding: 2px 2px;
 }
 
-.playlist-title{
-  font-weight:  800;
-  font-size :16px;
-  color: #5d001e;
-  margin:10px 0px 0px;
-
-}
-
-.playlist-subtitle{
-  font-weight: 400;
-  font-size: 12px;
-  color: #5c5b59;
+.limg {
+  margin-top: 10px;
+  width: 50%;
+  height: 60%;
 }
 
 .playlist-play{
-  width:40px;
-  height: 40px;
+  width :10%;
+  height: 10%;
 }
