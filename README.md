@@ -10,10 +10,12 @@
 
 1. Open your terminal or command prompt.
 2. Navigate to the root folder of the cloned project using the `cd` command.
-3. Once you are in the root folder, run the following command to install the required dependencies for the React app:
+3. Once you are in the root folder, run the following commands to install the required dependencies for the React app:
 
 
 `npm install`
+`pip install requirements.txt`
+
 This will install all the necessary libraries and packages specified in the package.json file.
 
 ## Step 3: Running the Python Server

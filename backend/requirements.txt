@@ -1,0 +1,5 @@
+Flask==2.1.1
+Flask-PyMongo==2.3.0
+Flask-Cors==4.0.0
+pymongo==4.4.1
+deepface==0.0.68
